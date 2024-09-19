@@ -1,139 +1,111 @@
-# Branching strategy
+# Our Branching Strategy 
 
-A branching strategy is a critical component of a software development workflow. It defines a structured method for how branches should be created, used, merged, and managed within version control systems like Git. A well-defined branching strategy helps maintain order, improves development efficiency, and reduces conflicts between parallel development efforts. Below are several popular branching strategies that are widely adopted in various types of projects
+Our branching strategy is a mix of two branching strategy git flow and github flow
 
-## Types of branching strategy
 
-1. [Git Flow](#git-flow)
-1. [GitHub Flow](#github-flow)
-1. [GitLab Flow](#gitlab-flow)
-1. [Trunk-Based Development](#trunk-based-development)
-
-![Branching strategies](/branching-strategies.png)
-
-## Git Flow 
-
-Git Flow is one of the most common branching strategies, particularly suited for projects with scheduled release cycles. It involves multiple branches for managing different levels of stability and various project phases:
 1. Main Branches:
-    1. master: Always reflects a production-ready state.
-    1. develop: Serves as an integration branch for features.
+    1. main/prod: Always reflects a production-ready state.
 1. Supporting Branches:
+    1. staging: Serves as an integration branch for features.
+    1. develop: Serves as an integration branch for features.
     1. Feature branches: Branch off from develop and merge back into develop when they are complete.
-    1. Release branches: Branch off from develop and are used to prepare a new production release. They allow for minor bug fixes and preparing meta-data for a release.
-    1. Hotfix branches: Branch from master and are used to quickly patch production releases. Once the hotfix is complete, it is merged into both master and develop (or the current release branch).
- 
-### When to Use Git Flow
-
-1. Git Flow is particularly beneficial in larger, structured development environments where multiple streams of development occur simultaneously, rigorous quality assurance is needed, and release schedules are defined.
-1. It’s well-suited for projects that require maintaining multiple versions of the software simultaneously.
-
-![Git FLow](/git-flow.png)
-
-### Pros
-
-1. Structured Approach
-1. Support for Multiple Versions
-1. Enhanced Quality Control
-1. Clear Role Assignments
-1. Parallel Development
-
- ### Cons
-
- 1. Complexity
- 1. Overhead
- 1. Merge Challenges
- 1. Continuous Deployment Challenges
-
-## GitHub Flow
-
-GitHub Flow is a simpler alternative to Git Flow and is better suited for projects that deploy regularly. It's lightweight and easier to manage:
-
-1. Single Main Branch:
-    1. main or master: Always holds the production-ready state.
-1. Feature Branches:
-    1. Developers create new branches for features or fixes from the main branch.
-    1. Once the feature is ready, it is submitted as a pull request for review.
-    1. After review, it is merged into the main branch and deployed.
+    
+![curret branch](/current-barnch.jpg)
 
 
-![Github FLow](/githubflow.png)
+Lest take an example and show how we need to work.
+## Cloning a repositorie
 
-### Pros
-1. Simplicity
-1. Continuous Integration and Deployment
-1. Collaboration and Review
-1. Rapid Feedback
-1. Reduced Risk of Integration Issues
+Cloning a repository is a fundamental operation in version control systems like Git. It involves creating a copy of an existing repository, typically from a remote location such as GitHub, Bitbucket, or GitLab, to your local machine. This allows you to work on the project independently and later sync your changes with the original repository.
 
-### Cons
+To clone a repository, you'll need a URL that points to the repository you want to clone. This URL can be obtained from the repository's page on the hosting platform.
 
-1. Lack of Explicit Structure for Larger Teams
-1. Overemphasis on Continuous Deployment 
-1. Potential for Master Branch Instability
-1. Handling Hotfixes
-1. Versioning Challenges
+### Add sshkey to Github 
 
-## GitLab Flow
+Adding an SSH key to your GitHub account allows you to establish a secure connection between your computer and GitHub without needing to supply your username and password every time you push changes. Here’s a step-by-step guide on how to generate an SSH key and add it to your GitHub account:
 
-GitLab Flow combines feature-driven development and feature branching with issue tracking. It is an extension of GitHub Flow but adds an environment-based approach where the environment stability increases as you move the code from left (less stable, development) to right (more stable, production):
 
-1. Environment Branches:
-production, pre-production, staging, etc.: These branches reflect environments.
-1. Feature Branches:
-    1. Similar to GitHub Flow, features are developed in separate branches based on the main branch (master or main).
-    1. Feature branches are merged into the next environment branch (e.g., staging) and eventually up to production.
+Step 1: Check for Existing SSH Keys
+First, you should check if you already have an SSH key set up on your computer:
 
-![gitlab flow](/gitlab-flow.png)
+```bash 
+ls -al ~/.ssh 
+```
 
-### Pros
+Look for files named either id_rsa.pub, id_ed25519.pub, or similar. If you see such files, you already have an SSH key. If not, you need to create one.
 
-1. Environment Branches
-1. Flexibility
-1. Integration with GitLab CI/CD
-1. Enhanced Review and Quality Control
-1. Visibility and Traceability
+Step 2: Generate a New SSH Key
 
-### Cons
+If you don’t already have an SSH key, you can generate one using the following command:
 
-1. Complexity for Smaller Teams
-1. Requires Rigorous Discipline
-1. Dependency on GitLab
-1. Overhead in Managing Multiple Branches
-1. Training and Onboarding
+```bash 
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+1. -t ed25519 specifies the type of key to create. ed25519 is the recommended public-key algorithm.
+1. -C "your_email@example.com" adds a label to the key with your email.
 
-## Trunk-Based Development
 
-Trunk-Based Development is a strategy designed for continuous integration, where developers work in short-lived branches or directly in the trunk:
-1. Single Branch:
-    1. trunk or main: The main development branch and the single source of truth for the project.
-1. Short-lived Feature Branches:
-    1. Developers create branches for features, but these branches are very short-lived, typically merged back into the main branch within a day or two.
+Add the SSH Key to Your GitHub Account:
 
-![Trunk](/trunk.png)
+Step 3: Go to GitHub.
+1. In the upper-right corner, click your profile photo, then click Settings.
+1. In the user settings sidebar, click SSH and GPG keys.
+1. Click New SSH key or Add SSH key.
+1. In the "Title" field, add a descriptive label for the new key. For example, if you’re using your personal laptop, you might call this key "Personal laptop".
+1. Paste your key into the "Key" field.
+1. Click Add SSH key.
+1. If prompted, confirm your GitHub password.
 
-### Pros
+Afetr adding your ssh key you can start cloning the repositorie
 
-1. Simplicity
-1. Rapid Feedback Loop
-1. Avoids Merge Hell
-1. Facilitates Continuous Delivery
-1. Enhanced Collaboration
+![Clone branch](/clone.png)
 
-### Cons
 
-1. Requires Automated Testing
-1. High Discipline and Coordination
-1. Potential for Breaking Changes
-1. Scale Challenges
-1. Continuous Monitoring Required
+## Creating a Feature branches
 
-## Things to consider
+To create a Feature branches you need to checkout to Develop branch first then you need to create a Feature branches using below command
 
-When selecting a branching strategy, consider the following factors:
+1. Create a New Branch
+It's a good practice to create a new branch for each set of changes you contribute:
 
-1. Project Size: Larger projects with multiple teams might benefit from a more structured approach like Git Flow.
-1. Release Cycle: Frequent, smaller releases often fit better with GitHub Flow or Trunk-Based Development.
-1. Team Workflow: Consider how your team works and their familiarity with the chosen strategy.
-1. Tooling: Some version control systems might integrate better with specific workflows, influencing the choice of strategy.
+```bash 
+git checkout -b feature-branch-name
+```
+Replace feature-branch-name with a descriptive name for your branch.
 
-The right branching strategy can streamline your development process, reduce errors, and help manage releases efficiently. Always tailor the strategy to fit your project's needs and team dynamics.
+1. Make Your Changes
+Make the changes you propose to contribute to the repository. You can edit files, add files, or delete files.
+
+2. Commit Your Changes
+After making your changes, you'll need to stage and commit them:
+
+```bash
+git add .
+git commit -m "A descriptive message about your changes"
+```
+
+The git add . command stages all your changes for commit. Replace the commit message with a clear description of what the changes entail.
+
+3. Push Your Changes
+Push your branch to your GitHub fork:
+
+```bash
+git push origin feature-branch-name
+```
+
+
+## Creating a PR for your Feature branches
+
+Creating a pull request (PR) on GitHub is a crucial part of contributing to collaborative projects. It allows you to propose changes to a repository that the repository owners or collaborators can review before merging into the main branch. Here's a step-by-step guide to creating a pull request:
+
+1. Navigate to the original repository you created a fork from.
+1. You might see a prompt to "Compare & pull request" on your recently pushed branches. Click that button. If you don't see the prompt:
+    1. Click on the Pull requests tab, then click the New pull request button.
+    1. Use the compare branch drop-down menus to select the branch from your fork (feature-branch-name) as the "compare" branch and the main repository’s branch (often main or master) as the "base" branch.
+1. Review the changes between your branch and the base branch. Make sure you're merging your changes into the correct branch.
+1. Click Create pull request.
+1. Add a title and a detailed description of your changes. Explain why your changes should be included in the main branch, linking any relevant issues or discussions.
+1. If your repository runs integration checks (like automated builds or tests), wait for them to complete and ensure they pass.
+1. Click Create pull request to submit the PR.
+
+![PR](/PR.png)
