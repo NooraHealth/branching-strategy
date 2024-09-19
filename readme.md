@@ -14,7 +14,7 @@ Our branching strategy is a mix of two branching strategy git flow and github fl
 
 
 Lest take an example and show how we need to work.
-## Cloning a repositorie
+## Cloning a Repository
 
 Cloning a repository is a fundamental operation in version control systems like Git. It involves creating a copy of an existing repository, typically from a remote location such as GitHub, Bitbucket, or GitLab, to your local machine. This allows you to work on the project independently and later sync your changes with the original repository.
 
@@ -56,7 +56,7 @@ Step 3: Go to GitHub.
 1. Click Add SSH key.
 1. If prompted, confirm your GitHub password.
 
-Afetr adding your ssh key you can start cloning the repositorie
+Afetr adding your ssh key you can start cloning the Repository
 
 ![Clone branch](/clone.png)
 
