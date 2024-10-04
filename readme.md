@@ -10,7 +10,7 @@ Our branching strategy is a mix of two branching strategy git flow and github fl
     1. develop: Serves as an integration branch for features.
     1. Feature branches: Branch off from develop and merge back into develop when they are complete.
     
-![curret branch](/current-barnch.jpg)
+![curret branch](/current-branch-2.png)
 
 
 Lest take an example and show how we need to work.
@@ -109,3 +109,31 @@ Creating a pull request (PR) on GitHub is a crucial part of contributing to coll
 1. Click Create pull request to submit the PR.
 
 ![PR](/PR.png)
+
+## Relese Notes
+
+GitHub releases allow you to easily distribute software versions, attach assets, and manage versioning. They are often used in combination with Git tags to mark important milestones in a project's development and deployment lifecycle. You can also automate this process using GitHub Actions.
+
+### Example Release Creation
+1. Tag Version: v1.0.0
+
+1. Release Title: Version 1.0.0 - Initial Release
+
+1. Description/Release Notes:
+
+``` bash
+## Changes:
+- Added user authentication system
+- Introduced new dashboard UI
+- Integrated payment gateway
+- Fixed several bugs from the previous version
+
+## Bug Fixes:
+- Fixed issue
+```
+
+1. Attach Assets: You can add compiled binaries for your project, for example, a .zip file or .tar.gz for distribution.
+
+1. Mark as Pre-Release: If you want to test your release before production, you can check the box for a pre-release.
+
+![PR](/relese-notes.png)
