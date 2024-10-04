@@ -6,9 +6,9 @@ Our branching strategy combines two branching strategies: git flow and github fl
 1. Main Branch:
     1. main/prod: Always reflects the latest production state.
 2. Supporting Branches:
-    2.1. staging: Serves as an pre-production/integration branch.
-    2.2. develop: Serves as an integration branch for features.
-    2.3. feature branches: Branch off from develop and merge back into develop when they are complete.
+    1. staging: Serves as an pre-production/integration branch.
+    1. develop: Serves as an integration branch for features.
+    1. feature branches: Branch off from develop and merge back into develop when they are complete.
     
 ![curret branch](/current-branch-2.png)
 
