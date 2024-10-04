@@ -1,19 +1,19 @@
 # Our Branching Strategy 
 
-Our branching strategy is a mix of two branching strategy git flow and github flow
+Our branching strategy combines two branching strategies: git flow and github flow
 
 
-1. Main Branches:
-    1. main/prod: Always reflects a production-ready state.
-1. Supporting Branches:
-    1. staging: Serves as an integration branch for features.
-    1. develop: Serves as an integration branch for features.
-    1. Feature branches: Branch off from develop and merge back into develop when they are complete.
+1. Main Branch:
+    1. main/prod: Always reflects the latest production state.
+2. Supporting Branches:
+    2.1. staging: Serves as an pre-production/integration branch.
+    2.2. develop: Serves as an integration branch for features.
+    2.3. feature branches: Branch off from develop and merge back into develop when they are complete.
     
 ![curret branch](/current-branch-2.png)
 
 
-Lest take an example and show how we need to work.
+Lets take an example and show how we need to work.
 ## Cloning a Repository
 
 Cloning a repository is a fundamental operation in version control systems like Git. It involves creating a copy of an existing repository, typically from a remote location such as GitHub, Bitbucket, or GitLab, to your local machine. This allows you to work on the project independently and later sync your changes with the original repository.
@@ -61,12 +61,12 @@ Afetr adding your ssh key you can start cloning the Repository
 ![Clone branch](/clone.png)
 
 
-## Creating a Feature branches
+## Creating a Feature branch
 
-To create a Feature branches you need to checkout to Develop branch first then you need to create a Feature branches using below command
+To create a Feature branch you need to checkout to Develop branch first then you need to create a Feature branch using below command
 
 1. Create a New Branch
-It's a good practice to create a new branch for each set of changes you contribute:
+It's a good practice to create a new branch for each set of features you build:
 
 ```bash 
 git checkout -b feature-branch-name
@@ -110,7 +110,7 @@ Creating a pull request (PR) on GitHub is a crucial part of contributing to coll
 
 ![PR](/PR.png)
 
-## Relese Notes
+## Release Notes
 
 GitHub releases allow you to easily distribute software versions, attach assets, and manage versioning. They are often used in combination with Git tags to mark important milestones in a project's development and deployment lifecycle. You can also automate this process using GitHub Actions.
 
