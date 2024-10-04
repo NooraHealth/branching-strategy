@@ -4,11 +4,12 @@ Our branching strategy combines two branching strategies: git flow and github fl
 
 
 1. Main Branch:
-    1. main/prod: Always reflects the latest production state.
+    1. main/prod: Always reflects the latest production state. Also has tags to indicate past production releases.
 2. Supporting Branches:
+    1. hotfix: Serves as a quick fix branch for high severity production issues.
     1. staging: Serves as an pre-production/integration branch.
-    1. develop: Serves as an integration branch for features.
-    1. feature branches: Branch off from develop and merge back into develop when they are complete.
+    1. develop: Serves as an integration branch for newly developed features.
+    1. feature and bug fix branches: Servers to build new features and/or bug fixes - Forks from dev branch and merge back into dev branch for completed features.
     
 ![curret branch](/current-branch-2.png)
 
